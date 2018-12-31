@@ -72,8 +72,8 @@
       ])
     },
     methods: {
-      onClickList() {
-
+      onClickList(marker, index) {
+        eventManager.$emit('isRestaurantClicked', marker, index)
       },
       infiniteHandler($state) {
         axios.get('/search', {
@@ -119,4 +119,11 @@
     }
   }
 </script>
+
+<style>
+.no-more {
+  color: grey;
+  margin: 10px 0 0;
+}
+</style>
 

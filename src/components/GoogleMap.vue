@@ -14,11 +14,23 @@
       v-for="(marker, index) in markers"
       @click="toggleInfoWindow(marker, index)"
     ></gmap-marker>
+
+    <!-- Info window -->
+    <gmap-info-window 
+      :options="infoOptions" 
+      :position="infoWindowPos" 
+      :opened="infoWinOpen" 
+      @closeclick="infoWinOpen=false"
+    >
+      <!-- Info card -->
+      <gmap-info-card :marker="infoContent"></gmap-info-card>
+    </gmap-info-window>
   </gmap-map>
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import InfoCard from './InfoCard'
 
   export default {
     data: () => ({
@@ -41,6 +53,30 @@
         'markers',
       ])
     },
+    created () {
+      eventManager.$on('isRestaurantClicked', (marker, index) => {
+        this.toggleInfoWindow(marker, index)
+      })
+    },
+    methods: {
+      toggleInfoWindow (marker, index) {
+        this.infoContent = marker
+        this.infoWindowPos = marker.position
+
+        //check if its the same marker that was selected if yes toggle
+        if (this.currentMindex === index) {
+          this.infoWinOpen = !this.infoWinOpen
+        }
+        // if different marker set infowindow to open and reset current marker index
+        else {
+          this.infoWinOpen = true
+          this.currentMindex = index
+        }
+      }
+    },
+    components: {
+      gmapInfoCard: InfoCard
+    }
   }
 </script>
 
