@@ -4,7 +4,10 @@ export default {
       search: '',
       cuisine: '',
       markers: [],
-      center: {}
+      center: {
+        lat: 28.6139,
+        lng: 77.2090
+      }
     }
   },
   mutations: {

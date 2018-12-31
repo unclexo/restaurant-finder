@@ -15,6 +15,6 @@ Vue.use(Vuex)
 Vue.use(Vuetify)
 Vue.use(VueGoogleMaps, {
   load: {
-    key: process.env.VUE_APP_GOOGLE_API_KEY || ''
+    key: process.env.VUE_APP_GOOGLE_MAP_API_KEY || ''
   }
 })
