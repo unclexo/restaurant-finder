@@ -6,7 +6,7 @@ import 'vuetify/dist/vuetify.min.css'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 // Sets defaults
-axios.defaults.baseURL = process.env.ZOMATO_BASE_URL || ''
+axios.defaults.baseURL = 'https://developers.zomato.com/api/v2.1'
 axios.defaults.headers.common['Accept'] = 'application/json'
 axios.defaults.headers.common['user-key'] = process.env.ZOMATO_API_KEY
 
