@@ -19,6 +19,9 @@ export default {
     },
     'SET_MARKERS' (state, markers) {
       state.markers = markers
+    },
+    'APPEND_MARKERS' (state, appendMarkers) {
+      state.markers = state.markers.concat(appendMarkers)
     }
   },
   actions: {
@@ -34,6 +37,9 @@ export default {
     initMarkers: ({ commit }, markers) => {
       commit('SET_MARKERS', markers)
     },
+    appendMarkers: ({ commit }, appendMarkers) => {
+      commit('APPEND_MARKERS', appendMarkers)
+    }
   },
   getters: {
     search: state => state.search,
