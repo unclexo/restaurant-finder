@@ -46,15 +46,15 @@
   export default {
     data: () => ({
       search: 'thai',
-      cuisine: 168,
+      cuisine: 0,
       cuisines: [],
     }),
     methods: {
       getRestaurantMarkers () {
         axios.get('/search', {
           params: {
-            count: 15,
             q: this.search,
+            count: 15,
             cuisines: this.cuisine,
           }
         })
@@ -109,6 +109,7 @@
               }
             })
 
+            cuisines.unshift({ text: 'No Cuisine', value: 0 })
             this.cuisines = cuisines
           }
         })
