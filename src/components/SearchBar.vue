@@ -107,7 +107,7 @@
               }
             })
 
-            cuisines.unshift({ text: 'No Cuisine', value: 0 })
+            cuisines.unshift({ text: 'Choose Cuisine', value: 0 })
             this.cuisines = cuisines
           }
         })

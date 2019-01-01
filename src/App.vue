@@ -13,7 +13,7 @@
 
     <v-toolbar color="#4169E1" app absolute clipped-left>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <span class="title ml-3 mr-5" :style="{ color: '#ffffff' }">Get&nbsp;<span class="font-weight-light">Taste</span></span>
+      <span class="title ml-3 mr-5" :style="{ color: '#ffffff' }"><span class="font-weight-light">Get</span>&nbsp;Taste</span>
       <!-- Search bar -->
       <app-search-bar></app-search-bar>
     </v-toolbar>
