@@ -49,7 +49,8 @@
 
     <!-- Infinite Loader -->
     <infinite-loading @infinite="infiniteHandler" spinner="spiral">
-      <div slot="no-more" class="no-more">No more restaurant.</div>
+      <div slot="no-more" class="no-more">The End</div>
+      <div slot="no-results" class="no-results">No restaurants found.</div>
     </infinite-loading>
 
   </v-list>
@@ -78,14 +79,14 @@
       infiniteHandler($state) {
         axios.get('/search', {
           params: {
-            count: 15,
             q: this.search,
             start: this.start,
             cuisines: this.cuisine,
           }
         })
           .then(response => {
-            if (response.data && this.start <= response.data.results_found) {
+            console.log(response)
+            if (response.data && this.start < parseInt(response.data.results_found + 20)) {
               const appendMarkers = response.data.restaurants.map(restaurant => {
                 return {
                   id: restaurant.restaurant.id,
@@ -102,8 +103,17 @@
                 }
               })
 
-              this.start += 15
-              this.$store.dispatch('appendMarkers', appendMarkers)
+              // Increases the start
+              this.start += 20
+
+              if (appendMarkers.length > 0) {
+                // Updates map center position
+                eventManager.$emit('updateCenterPosition', appendMarkers[0].position)
+                
+                // Appends markers to the state
+                this.$store.dispatch('appendMarkers', appendMarkers)
+              }
+
               $state.loaded()
             } else {
               $state.complete()
@@ -121,7 +131,7 @@
 </script>
 
 <style>
-.no-more {
+.no-more, .no-results {
   color: grey;
   margin: 10px 0 0;
 }

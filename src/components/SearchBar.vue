@@ -54,7 +54,6 @@
         axios.get('/search', {
           params: {
             q: this.search,
-            count: 15,
             cuisines: this.cuisine,
           }
         })
@@ -84,7 +83,6 @@
 
               // Updates center position of the map
               eventManager.$emit('updateCenterPosition', markers[0].position)
-
             }
           })
           .catch(error => {
@@ -93,9 +91,6 @@
       }
     },
     created () {
-      // Gets restaurants as defaults
-      this.getRestaurantMarkers()
-
       // Gets cuisines as defaults
       axios.get('/cuisines', {
         params: {
