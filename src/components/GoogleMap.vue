@@ -35,6 +35,10 @@
   export default {
     data: () => ({
       zoom: 10,
+      center: {
+        lat: 28.6139,
+        lng: 77.2090
+      },
       infoContent: {},
       infoWindowPos: null,
       infoWinOpen: false,
@@ -49,11 +53,15 @@
     }),
     computed: {
       ...mapGetters([
-        'center',
+        // 'center',
         'markers',
       ])
     },
     created () {
+      // Updates center position of the map
+      eventManager.$on('updateCenterPosition', (position) => {
+        this.center = position
+      })
       eventManager.$on('isRestaurantClicked', (marker, index) => {
         this.toggleInfoWindow(marker, index)
       })

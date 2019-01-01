@@ -81,7 +81,10 @@
               this.$store.dispatch('initSearch', this.search)
               this.$store.dispatch('initCuisine', this.cuisine)
               this.$store.dispatch('initMarkers', markers)
-              this.$store.dispatch('initCenter', markers[0].position)
+
+              // Updates center position of the map
+              eventManager.$emit('updateCenterPosition', markers[0].position)
+
             }
           })
           .catch(error => {

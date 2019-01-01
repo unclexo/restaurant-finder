@@ -1,13 +1,9 @@
 export default {
   state () {
     return {
-      search: '',
-      cuisine: '',
+      search: 'thai',
+      cuisine: 0,
       markers: [],
-      center: {
-        lat: 28.6139,
-        lng: 77.2090
-      }
     }
   },
   mutations: {
@@ -16,9 +12,6 @@ export default {
     },
     'SET_CUISINE' (state, cuisine) {
       state.cuisine = cuisine
-    },
-    'SET_CENTER' (state, position) {
-      state.center = position
     },
     'SET_MARKERS' (state, markers) {
       state.markers = markers
@@ -34,9 +27,6 @@ export default {
     initCuisine: ({ commit }, cuisine) => {
       commit('SET_CUISINE', cuisine)
     },
-    initCenter: ({ commit }, position) => {
-      commit('SET_CENTER', position)
-    },
     initMarkers: ({ commit }, markers) => {
       commit('SET_MARKERS', markers)
     },
@@ -47,7 +37,6 @@ export default {
   getters: {
     search: state => state.search,
     cuisine: state => state.cuisine,
-    center: state => state.center,
     markers: state => state.markers,
   }
 }
