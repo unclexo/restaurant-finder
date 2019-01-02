@@ -59,6 +59,7 @@
 <script>
   import axios from 'axios'
   import { mapGetters } from 'vuex'
+  import { eventManager } from '../main'
   import InfiniteLoading from 'vue-infinite-loading'
 
   export default {
@@ -85,7 +86,6 @@
           }
         })
           .then(response => {
-            console.log(response)
             if (response.data && this.start < parseInt(response.data.results_found + 20)) {
               const appendMarkers = response.data.restaurants.map(restaurant => {
                 return {

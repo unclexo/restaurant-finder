@@ -31,6 +31,7 @@
 <script>
   import { mapGetters } from 'vuex'
   import InfoCard from './InfoCard'
+  import { eventManager } from '../main'
 
   export default {
     data: () => ({

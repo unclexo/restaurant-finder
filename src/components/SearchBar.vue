@@ -42,6 +42,7 @@
 
 <script>
   import axios from 'axios'
+  import { eventManager } from '../main'
 
   export default {
     data: () => ({
